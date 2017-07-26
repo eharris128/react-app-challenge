@@ -7,7 +7,8 @@ export default class BlogSearch extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            input: ''
+            input: '',
+            showMoreInfo: false
         }
     }
 
@@ -19,7 +20,7 @@ export default class BlogSearch extends React.Component {
         return (
             <div className="blog-search">
                 <Input onChange={input => this.setState({input})}/>
-                <Output blogs={filteredBlogs}/>
+                <Output id={this.state.showMoreInfo} onClick={e => this.setState({showMoreInfo: !this.state.showMoreInfo})} blogs={filteredBlogs}/>
             </div>
         )
     }
