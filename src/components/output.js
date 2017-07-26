@@ -8,8 +8,8 @@ export default function Output(props) {
             return (
                     <li key={index}>
                         <strong>{blog.title}</strong> by {blog.author.firstName} {blog.author.lastName} - BlogPost snippet: {blog.content.substring(0,100)}
-                        <button onClick={() => props.onClick(index)}>
-                        Click to read:
+                        <button onClick={() => props.onClick(undefined)}>
+                        Click to minimize:
                         </button>
                    </li>
 
@@ -34,5 +34,3 @@ export default function Output(props) {
         </ul>
     )
 }
-
-// button onClick={props.onChange(index)}
