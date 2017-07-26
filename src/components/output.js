@@ -9,17 +9,17 @@ export default function Output(props) {
     const blogs = props.blogs.map((blog, index) =>
     <div key={index}>
         <li>
-            <strong>{blog.title}</strong> by {blog.firstName} {blog.lastName} - BlogPost snippet: {blogSubString(blog.content)}
+            <strong>{blog.title}</strong> by {blog.author.firstName} {blog.author.lastName} - BlogPost snippet: {blogSubString(blog.content)}
         </li>
         <button>
             Click to read more:
         </button>
     </div>
     );
+    
     return (
         <ul className="output" aria-live="polite">
             {blogs}
         </ul>
     )
 }
-
