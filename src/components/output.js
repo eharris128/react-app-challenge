@@ -6,25 +6,23 @@ export default function Output(props) {
         console.log('current index' + index);
         if (props.expandedIndex === index) {
             return (
-                <div key={index}>
-                    <li>
+                    <li key={index}>
                         <strong>{blog.title}</strong> by {blog.author.firstName} {blog.author.lastName} - BlogPost snippet: {blog.content.substring(0,100)}
-                    </li>
-                    <button onClick={props.onClick}>
+                        <button onClick={() => props.onClick(index)}>
                         Click to read:
-                    </button>
-                </div>
+                        </button>
+                   </li>
+
             )
         } else {
             return (
-                <div key={index}>
-                    <li>
+                    <li key={index}>
                         <strong>{blog.title}</strong> by {blog.author.firstName} {blog.author.lastName} - BlogPost snippet: {blog.content.substring(0,40)}
-                    </li>
-                    <button onClick={props.onClick}>
+                        <button onClick={() => props.onClick(index)}>
                         Click to read:
-                    </button>
-                </div>
+                        </button>
+                    </li>
+
             )
         }
         
@@ -36,4 +34,5 @@ export default function Output(props) {
         </ul>
     )
 }
-//onClick={props.onClick(index)}
+
+// button onClick={props.onChange(index)}

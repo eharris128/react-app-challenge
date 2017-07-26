@@ -8,7 +8,7 @@ export default class BlogSearch extends React.Component {
         super(props);
         this.state = {
             input: '',
-            showMoreInfo: 5
+            showMoreInfo: 0
         }
     }
 
