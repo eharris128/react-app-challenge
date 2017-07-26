@@ -2,9 +2,12 @@ import React from 'react';
 
 export default function Input(props) {
     return (
-        <form onSubmit={e => e.preventDefault()}>
-            <label htmlFor="search">Search by blog title?</label>&emsp;
+        <div className="form-group">
+            <label htmlFor="search"> Enter query string: </label>&emsp;
             <input onChange={e => props.onChange(e.target.value)} type="search" id="search" name="search" placeholder="My Awesome blog title"/>
-        </form>
+        </div>
     )
 }
+
+//onSelect={e => props.onSelect(e.target.value)}
+//<select onChange={e => props.onChange(e.target.value)} id="searchOption">

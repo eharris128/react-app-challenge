@@ -2,24 +2,43 @@ import React from 'react';
 
 import Input from './input';
 import Output from './output';
+import Sandbox from './sandbox';
 
 export default class BlogSearch extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
             input: '',
-            showMoreInfo: 0
+            showMoreInfo: undefined,
+            searchType: 'title'
         }
     }
 
     render() {
-
+        console.log('search type: ' + this.state.searchType);
+        console.log('input' + this.state.input);
+        let type = this.state.searchType;
+        let input = this.state.input.toLowerCase();
         const filteredBlogs = this.props.blogs.filter(blog => {
-            return blog.title.toLowerCase().includes(this.state.input.toLowerCase());
+            if(type === 'title') {
+                return blog.title.toLowerCase().includes(input);
+            } else if (type === 'author-first-name') {
+                return blog.author.firstName.toLowerCase().includes(input);
+            } else if (type === 'author-last-name') {
+                return blog.author.lastName.toLowerCase().includes(input);
+            } else if (type === 'blog-content') {
+                return blog.content.toLowerCase().includes(input);
+            }
+            return blog;
         })
         return (
             <div className="blog-search">
-                <Input onChange={input => this.setState({input})}/>
+                <form>
+                    <fieldset>
+                        <Sandbox onChange={searchType => this.setState({searchType})}/>
+                        <Input onChange={input => this.setState({input})}/>
+                    </fieldset>
+                </form>
                 <Output expandedIndex={this.state.showMoreInfo} onClick={showMoreInfo => this.setState({showMoreInfo})} blogs={filteredBlogs}/>
             </div>
         )

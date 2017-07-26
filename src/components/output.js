@@ -3,7 +3,6 @@ import React from 'react';
 export default function Output(props) {
     // console.log('hello class name' + (props.expandedIndex));
     const blogs = props.blogs.map((blog, index) => {
-        console.log('current index' + index);
         if (props.expandedIndex === index) {
             return (
                     <li key={index}>
