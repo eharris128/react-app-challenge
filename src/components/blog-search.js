@@ -9,7 +9,7 @@ export default class BlogSearch extends React.Component {
         super(props);
         this.state = {
             input: '',
-            showMoreInfo: undefined,
+            expandedPostId: undefined,
             searchType: 'title'
         }
     }
@@ -19,16 +19,20 @@ export default class BlogSearch extends React.Component {
         let input = this.state.input.toLowerCase();
 
         const filteredBlogs = this.props.blogs.filter(blog => {
+            // const re = /-/g;
+            // type = type.replace(re, '.')// replacer statement here
+            console.log('my type: ' + type)
             if (type === 'title') {
                 return blog.title.toLowerCase().includes(input);
-            } else if (type === 'author-first-name') {
+            } else if (type === 'author-firstName') {
                 return blog.author.firstName.toLowerCase().includes(input);
-            } else if (type === 'author-last-name') {
+            } else if (type === 'author-lastName') {
                 return blog.author.lastName.toLowerCase().includes(input);
             } else if (type === 'blog-content') {
                 return blog.content.toLowerCase().includes(input);
             }
-            return blog;
+            return 'hello'
+            // return blog[type].toLowerCase().includes(input);
         })
         return (
             <div className="blog-search">
@@ -38,7 +42,7 @@ export default class BlogSearch extends React.Component {
                         <Input onChange={input => this.setState({input})}/>
                     </fieldset>
                 </form>
-                <Output expandedIndex={this.state.showMoreInfo} onClick={showMoreInfo => this.setState({showMoreInfo})} blogs={filteredBlogs}/>
+                <Output expandedIndex={this.state.expandedPostId} onClick={expandedPostId => this.setState({expandedPostId})} blogs={filteredBlogs}/>
             </div>
         )
     }

@@ -4,11 +4,10 @@ export default function Output(props) {
     // console.log('hello class name' + (props.expandedIndex));
     const blogs = props.blogs.map((blog, index) => {
         if (props.expandedIndex === index) {
-            return (
+            return ( 
                     <li key={index}>
                         <strong>{blog.title}</strong> by {blog.author.firstName} {blog.author.lastName} - BlogPost snippet: {blog.content.substring(0,100)}
-                        <button onClick={() => props.onClick(undefined)}>
-                        Click to minimize:
+                        <button onClick={() => props.onClick(undefined)}>Click to minimize:
                         </button>
                    </li>
 
@@ -17,9 +16,7 @@ export default function Output(props) {
             return (
                     <li key={index}>
                         <strong>{blog.title}</strong> by {blog.author.firstName} {blog.author.lastName} - BlogPost snippet: {blog.content.substring(0,40)}
-                        <button onClick={() => props.onClick(index)}>
-                        Click to read:
-                        </button>
+                        <button onClick={() => props.onClick(index)}>Click to read:</button>
                     </li>
 
             )
@@ -28,8 +25,11 @@ export default function Output(props) {
          });
 
     return (
-        <ul className="output" aria-live="polite">
-            {blogs}
-        </ul>
+        <div>
+            <h2 aria-live="polite">{blogs.length} blogs</h2>
+            <ul className="output" >
+                {blogs}
+            </ul>   
+        </div>
     )
 }
