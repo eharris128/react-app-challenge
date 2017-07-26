@@ -15,12 +15,11 @@ export default class BlogSearch extends React.Component {
     }
 
     render() {
-        console.log('search type: ' + this.state.searchType);
-        console.log('input' + this.state.input);
         let type = this.state.searchType;
         let input = this.state.input.toLowerCase();
+
         const filteredBlogs = this.props.blogs.filter(blog => {
-            if(type === 'title') {
+            if (type === 'title') {
                 return blog.title.toLowerCase().includes(input);
             } else if (type === 'author-first-name') {
                 return blog.author.firstName.toLowerCase().includes(input);
